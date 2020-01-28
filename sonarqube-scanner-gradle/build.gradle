@@ -1,9 +1,17 @@
 plugins {
+    id "com.gradle.plugin-publish" version "0.9.9"
     id "jacoco"
     id "java"
     id "application"
     id "org.sonarqube" version "7.9"
 }
+
+plugins{
+    sonarqubePlugin {
+      id = 'org.sonarqube'
+      displayName = projectName
+    }
+  }
 
 description = 'Example of SonarQube Scanner for Gradle Usage'
 version = '1.0'
