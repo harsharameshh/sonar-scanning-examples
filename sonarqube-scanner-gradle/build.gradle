@@ -12,6 +12,12 @@ plugins{
       displayName = projectName
     }
   }
+  
+sonarqube {
+  properties {
+    property 'sonar.projectName', projectName
+  }
+}
 
 description = 'Example of SonarQube Scanner for Gradle Usage'
 version = '1.0'
