@@ -105,6 +105,7 @@ pluginBundle {
 sonarqube {
   properties {
     property 'sonar.projectName', projectName
+    property "sonar.sources", "src"
   }
 }
 
