@@ -4,15 +4,19 @@ plugins {
     id "java"
     id "application"
     id "org.sonarqube" version "7.9"
+	
 }
 
-plugins{
-    sonarqubePlugin {
-      id = 'org.sonarqube'
-      displayName = projectName
-    }
-  }
-  
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'java'
+apply plugin: 'jacoco'
+
+
+
+group = 'org.sonarsource.scanner.gradle'
+description = 'Gradle plugin to help analyzing projects with SonarQube'
+def projectName = 'aigdevops after sonar'
+
 sonarqube {
   properties {
     property 'sonar.projectName', projectName
@@ -31,9 +35,25 @@ repositories {
     jcenter()
 }
 
+pluginBundle {
+ plugins {
+	sonarqubePlugin {
+      id = 'org.sonarqube'
+      displayName = projectName
+    }
+  }
+	
+  }
+sonarqube {
+  properties {
+    property 'sonar.projectName', projectName
+  }
+}
+
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
     compile 'com.google.guava:guava:21.0'
+	compile 'org.sonarsource.scanner.api:sonar-scanner-api:2.14.0.2002'
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
